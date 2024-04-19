@@ -493,7 +493,7 @@
 
             .container,
             .mywindow {
-                width: 80vw;
+                width: 50vw;
                 /* Adjust width to be responsive */
                 height: auto;
                 /* Adjust height to be responsive */
@@ -689,7 +689,7 @@
                 <div class="mycontent">
                     Are you gay?<br>
                 </div>
-                <div class="mybutton">
+                <div class="mybutton" style="margin-left: 2rem;">
                     <div class="mybuttonno" onmouseover="move()" onclick="move2()">NO</div>
                     <div class="mybuttonyes" onclick="playVid()">Yes</div>
                 </div>
@@ -837,24 +837,29 @@
         }
 
         function move2() {
-            kali = 50;
+            // Constants
+            const kali = 50;
+            const offsetRange = 10;
+            const adjustmentFactor = 20;
+
+            // Add animation effects
             addanimation();
-            random1 = (mywindow.offsetTop + (Math.floor(Math.random() * 10) - 5) * kali);
-            random2 = (mywindow.offsetLeft + (Math.floor(Math.random() * 10) - 5) * kali);
-            if (random1 > 0 && random1 < 33) random1 = 33 + 20;
-            if (random1 < 0 && random1 > -33) random1 = -33 - 20;
-            if (random2 > 0 && random2 < 83) random2 = 83 + 20;
-            if (random2 < 0 && random2 > -83) random2 = -83 - 20;
-            if (random1 == 0 && random2 == 0) random1 = -100;
+
+            // Determine new positions with randomness
+            let random1 = mywindow.offsetTop + (Math.floor(Math.random() * offsetRange) - (offsetRange / 2)) * kali;
+            let random2 = mywindow.offsetLeft + (Math.floor(Math.random() * offsetRange) - (offsetRange / 2)) * kali;
+
+            // Ensure the window does not overlap boundaries
+            if (random1 < 0) random1 = adjustmentFactor;
+            if (random1 + mywindow.clientHeight > window.innerHeight) random1 = window.innerHeight - mywindow.clientHeight - adjustmentFactor;
+            if (random2 < 0) random2 = adjustmentFactor;
+            if (random2 + mywindow.clientWidth > window.innerWidth) random2 = window.innerWidth - mywindow.clientWidth - adjustmentFactor;
+
+            // Set new positions
             mywindow.style.top = random1 + "px";
             mywindow.style.left = random2 + "px";
-            if (random1 < 0 || ((random1 + mywindow.clientHeight) > window.innerHeight)) {
-                mywindow.style.top = "calc(50% - " + mywindow.clientHeight / 2 + "px)";
-            }
-            if (random2 < 0 || ((random2 + mywindow.clientWidth) > window.innerWidth)) {
-                mywindow.style.left = "calc(50% - " + mywindow.clientWidth / 2 + "px)";
-            }
         }
+
 
         function addanimation() {
             var element = document.getElementById("mywindow");
