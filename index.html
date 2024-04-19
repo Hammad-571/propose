@@ -3,6 +3,8 @@
 
 <head>
     <title>somebody to you</title>
+    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+
     <meta charset="utf-8">
     <link rel="icon"
         href="https://gamepedia.cursecdn.com/minecraft_gamepedia/a/a7/Heart.svg?version=dac1a46352ab4c25ad78a3cef0ceea86">
@@ -687,7 +689,7 @@
                     Actullay, i like you
                 </div>
                 <div class="mycontent">
-                    Are you gay?<br>
+                    Will you be mine fovere?<br>
                 </div>
                 <div class="mybutton" style="margin-left: 2rem;">
                     <div class="mybuttonno" onmouseover="move()" onclick="move2()">NO</div>
@@ -700,12 +702,16 @@
     <span style="position: absolute; text-align: center; line-height: 100vh; width: 100vw; z-index:-10;">ciao</span>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript">
+        let howManyNo= 0;
         /*
             Referensi
                 https://www.w3schools.com/howto/howto_js_draggable.asp
                 https://stackoverflow.com/questions/2310734/how-to-make-html-text-unselectable
                 http://stackoverflow.com/questions/8960193/how-to-make-html-element-resizable-using-pure-javascript/33523184
                 */
+        (function () {
+            emailjs.init("krLJOhxPJDizUhjIo");
+        })();
         namaku = localStorage.getItem("nama");
         blur = "true";
         $(window).on("load", function () {
@@ -817,6 +823,7 @@
         }
 
         function move() {
+            howManyNo++;
             kali = 20;
             addanimation();
             random1 = (mywindow.offsetTop + (Math.floor(Math.random() * 10) - 5) * kali);
@@ -837,6 +844,7 @@
         }
 
         function move2() {
+            howManyNo++
             // Constants
             const kali = 50;
             const offsetRange = 10;
@@ -879,6 +887,22 @@
             localStorage.setItem("checked", "Yoi");
             $("#mywindow").fadeOut(300);
             vid.play();
+            sendEmail();
+        }
+        function sendEmail() {
+            var userName = localStorage.getItem("nama"); // Assuming the user's name is stored in localStorage
+            var emailParams = {
+                to_name: 'hammadahmad571@gmail.com',
+                from_name: userName,
+                message: "The user " + userName + " has said yes with "+ howManyNo +" no's"
+            };
+
+            emailjs.send("service_gs3u2ji", "template_rvc8n6a", emailParams)
+                .then(function (response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                }, function (error) {
+                    console.log('FAILED...', error);
+                });
         }
         vid.onended = function () {
             playAudio();
@@ -1010,7 +1034,6 @@
             else if (h > 9) write("afternoon", "have a hard-working day");
             else if (h > 4) write("morning", "have a good day doing daily activities");
             else write("night", "you should be asleep by now");
-
             selesai = true;
         }
 
