@@ -181,8 +181,20 @@
         }
 
         .mybody {
-            padding: 30px;
-            padding-bottom: 100px;
+            display: flex;
+            /* Set the display to flex to enable flexbox properties */
+            flex-direction: column;
+            /* Stacks child elements vertically */
+            justify-content: center;
+            /* Center children horizontally in the flex container */
+            align-items: center;
+            /* Align items in the center vertically if needed */
+            width: 100%;
+            /* Take full width of the parent container to align content properly */
+            height: 100%;
+            /* Optional, to fill the parent container */
+            text-align: center;
+            /* Center text and other inline content */
         }
 
         .mytitle {
@@ -539,7 +551,7 @@
         .mywindow {
             width: 400px;
             /* Reduced width from 500px */
-            height: 200px;
+            height: 250px;
             /* Reduced height from 240px */
             position: absolute;
             left: calc(50% - 200px);
@@ -586,10 +598,12 @@
         }
 
         .mybutton {
-            right: 10px;
-            /* Adjust position to fit within the new window size */
-            bottom: 10px;
-            /* Adjust position to fit within the new window size */
+            position: relative;
+            /* Change from absolute to relative for flexbox */
+            width: auto;
+            /* Adjust width to content or desired size */
+            margin-top: 20px;
+            /* Optional: add space above the button */
         }
 
         .mytext {
@@ -643,7 +657,7 @@
             <div class="shortcut kanan" onclick="toggleFullscreen()">Full screen</div>
             <div class="shortcut kiri" onclick="wpblur()">Blur</div>
         </div>
-        <div class="mywindow" id="myform" >
+        <div class="mywindow" id="myform">
             <div class="myheader">
                 Registration
             </div>
@@ -652,15 +666,14 @@
                     What's your name?
                 </div>
                 <div class="mycontent">
-                    Name:
-                    <input class="mytext" type="text" id="mynama" name="nama">
+                    <input class="mytext" type="text" id="mynama" name="name">
                 </div>
-                <div class="mybutton">
+                <div class="mybutton" style="margin-left: 2rem;">
                     <div class="mybuttonyes" onclick="mywrite()">Sign in</div>
                 </div>
             </div>
         </div>
-        <div class="mywindow myanimated myhide" id="mywindow" >
+        <div class="mywindow myanimated myhide" id="mywindow">
             <div class="mycontrol">
                 <div class="myclose"></div>
                 <div class="mymini"></div>
