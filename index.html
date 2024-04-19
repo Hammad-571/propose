@@ -534,6 +534,78 @@
             border-radius: 5px;
             /* Aesthetic rounded corners */
         }
+
+        /* Base styles for .mywindow */
+        .mywindow {
+            width: 400px;
+            /* Reduced width from 500px */
+            height: 200px;
+            /* Reduced height from 240px */
+            position: absolute;
+            left: calc(50% - 200px);
+            /* Adjusted for new width */
+            top: calc(50% - 100px);
+            /* Adjusted for new height */
+            font-size: 10pt;
+            /* Adjust font size as needed */
+            border-radius: 10px;
+            border: 1px solid #C6C6C6;
+            box-shadow: 0px 0px 10px #00000020;
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            .mywindow {
+                width: 90vw;
+                /* Make width responsive */
+                height: auto;
+                /* Adjust height automatically based on content */
+                left: 5vw;
+                /* Center align the window */
+                top: 10vh;
+                /* Provide some top margin */
+                transform: none;
+                /* Remove transformations */
+            }
+
+            .mytitle,
+            .mycontent,
+            .mybutton {
+                font-size: 9pt;
+                /* Slightly smaller font size for small devices */
+                padding: 5px;
+                /* Adjust padding */
+            }
+        }
+
+        /* Adjustments for internal elements to fit better in the smaller window */
+        .mytitle,
+        .mycontent {
+            padding: 10px;
+            /* Smaller padding to save space */
+        }
+
+        .mybutton {
+            right: 10px;
+            /* Adjust position to fit within the new window size */
+            bottom: 10px;
+            /* Adjust position to fit within the new window size */
+        }
+
+        .mytext {
+            width: 90%;
+            /* Make input fields responsive */
+            padding: 5px;
+            /* Adequate padding for touch */
+        }
+
+        .mybuttonyes,
+        .mybuttonno {
+            width: 80px;
+            /* Adjust button width to fit new layout */
+            padding: 5px;
+            /* Adjust padding for better touch interaction */
+        }
     </style>
 </head>
 
