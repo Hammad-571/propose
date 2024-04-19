@@ -358,7 +358,7 @@
         }
 
         .ucapan::before {
-            content: "Klik untuk mencari";
+            content: "Click to search";
             font-size: 12pt;
             width: 200px;
             height: 50px;
@@ -408,7 +408,7 @@
         }
 
         #nama::before {
-            content: "Klik untuk mengubah";
+            content: "CLick to change";
             width: 200px;
             height: 50px;
             line-height: 50px;
@@ -518,7 +518,7 @@
             </div>
             <div class="mybody">
                 <div class="mytitle">
-                   What's your name?
+                    What's your name?
                 </div>
                 <div class="mycontent">
                     Name:
@@ -557,16 +557,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript">
         /*
-			Referensi
-	  		https://www.w3schools.com/howto/howto_js_draggable.asp
-	  		https://stackoverflow.com/questions/2310734/how-to-make-html-text-unselectable
-	  		http://stackoverflow.com/questions/8960193/how-to-make-html-element-resizable-using-pure-javascript/33523184
-	  		*/
+            Referensi
+                https://www.w3schools.com/howto/howto_js_draggable.asp
+                https://stackoverflow.com/questions/2310734/how-to-make-html-text-unselectable
+                http://stackoverflow.com/questions/8960193/how-to-make-html-element-resizable-using-pure-javascript/33523184
+                */
         namaku = localStorage.getItem("nama");
         blur = "true";
         $(window).on("load", function () {
             $(".preload").css("background", "#00000000").css("color", "#FFFFFF00").css("backdrop-filter",
-                "blur(0px)").text("SELESAI").css("z-index", "-2");
+                "blur(0px)").text("Finished").css("z-index", "-2");
         });
 
         function init() {
@@ -822,7 +822,7 @@
                 $(".ucapan").text("");
                 $(".ucapan *").remove();
                 $(".ucapan").append(
-                    "<input type='text' id='textcari' style='background:#00000000; width:300px; transform:translateX(-70px); color:#000; outline: none; box-sizing:border-box; border: 0px solid #000; font-size:20px' placeholder='Cari di sini' autofocus></input><span class='tombolcari'; style='transition: all ease 0.3s; border-radius:10px; width:60px; height:50px; top:calc(50% - 25px); right:90px; line-height:50px; position:absolute;' onclick='cariok()'>Cari</span><span class='tombolcari'; style='transition: all ease 0.3s; border-radius:10px; width:60px; height:50px; top:calc(50% - 25px); right:20px; line-height:50px; position:absolute;' onclick='caribatal()'>Batal</span>"
+                    "<input type='text' id='textcari' style='background:#00000000; width:300px; transform:translateX(-70px); color:#000; outline: none; box-sizing:border-box; border: 0px solid #000; font-size:20px' placeholder='Cari di sini' autofocus></input><span class='tombolcari'; style='transition: all ease 0.3s; border-radius:10px; width:60px; height:50px; top:calc(50% - 25px); right:90px; line-height:50px; position:absolute;' onclick='cariok()'>find</span><span class='tombolcari'; style='transition: all ease 0.3s; border-radius:10px; width:60px; height:50px; top:calc(50% - 25px); right:20px; line-height:50px; position:absolute;' onclick='caribatal()'>Cancel</span>"
                 );
                 document.querySelector("#textcari").addEventListener("keyup", function (e) {
                     if (e.key === "Enter") {
@@ -853,14 +853,15 @@
             $(".ucapan").append("<span id='spannama2'></span>");
             var today = new Date();
             var h = today.getHours();
-            if (h > 23) tulis("malam", "seharusnya kamu sudah tidur");
-            else if (h > 19) tulis("malam", "waktunya kamu untuk beristirahat");
-            else if (h > 18) tulis("petang", "selamat menikmati senja, awas kena asam lambung");
-            else if (h > 14) tulis("sore", "selamat datang kembali, jelang senja");
-            else if (h > 13) tulis("siang", "tetap semangat menjalani hari")
-            else if (h > 9) tulis("siang", "selamat bekerja keras")
-            else if (h > 4) tulis("pagi", "selamat melakukan aktivitas harian");
-            else tulis("malam", "seharusnya kamu sudah tidur");
+            if (h > 23) write("night", "you should be asleep by now");
+            else if (h > 19) write("night", "time for you to rest");
+            else if (h > 18) write("evening", "enjoy the sunset, watch out for acid reflux");
+            else if (h > 14) write("afternoon", "welcome back, as evening approaches");
+            else if (h > 13) write("afternoon", "keep up the spirit throughout the day");
+            else if (h > 9) write("afternoon", "have a hard-working day");
+            else if (h > 4) write("morning", "have a good day doing daily activities");
+            else write("night", "you should be asleep by now");
+
             selesai = true;
         }
 
@@ -896,14 +897,14 @@
             var t = setTimeout(startTime, 500);
             mytanggal();
             if (cari) {
-                if (h > 23) tulis("malam", "seharusnya kamu sudah tidur");
-                else if (h > 18) tulis("malam", "waktunya kamu untuk beristirahat");
-                else if (h > 17) tulis("petang", "selamat menikmati senja, awas kena asam lambung");
-                else if (h > 14) tulis("sore", "selamat datang kembali, jelang senja");
-                else if (h > 13) tulis("siang", "tetap semangat menjalani hari")
-                else if (h > 9) tulis("siang", "selamat bekerja keras")
-                else if (h > 4) tulis("pagi", "selamat melakukan aktivitas harian");
-                else tulis("malam", "seharusnya kamu sudah tidur");
+                if (h > 23) write("night", "you should be asleep by now");
+                else if (h > 19) write("night", "time for you to rest");
+                else if (h > 18) write("evening", "enjoy the sunset, watch out for acid reflux");
+                else if (h > 14) write("afternoon", "welcome back, as evening approaches");
+                else if (h > 13) write("afternoon", "keep up the spirit throughout the day");
+                else if (h > 9) write("afternoon", "have a hard-working day");
+                else if (h > 4) write("morning", "have a good day doing daily activities");
+                else write("night", "you should be asleep by now");
                 if (h > 18) document.querySelector("img").src = "src/assets/wp1.png";
                 else if (h > 4) document.querySelector("img").src = "src/assets/wp2.png";
                 else document.querySelector("img").src = "src/assets/wp1.png";
